@@ -2,9 +2,12 @@
 
 class Ball
 {
+private:
+	Color color;
+	float radius, velocity, gravity;
 public:
-	float x, y, radius, bounceImpulse, velocity, gravity;
-	Ball(float aX, float aY, float aRadius, float aBounceImpulse)
+	float x, y, bounceImpulse;
+	Ball(float aX, float aY, float aRadius, float aBounceImpulse, Color aColor)
 	{
 		x = aX;
 		y = aY;
@@ -12,6 +15,7 @@ public:
 		bounceImpulse = aBounceImpulse;
 		velocity = 0;
 		gravity = 9.81;
+		color = aColor;
 	}
 
 	void move()
@@ -31,6 +35,6 @@ public:
 
 	void draw()
 	{
-		DrawCircle(x, y, radius, RAYWHITE);
+		DrawCircle(x, y, radius, color);
 	}
 };

@@ -11,14 +11,15 @@ int main()
 	SetWindowState(FLAG_VSYNC_HINT);
 
 	std::vector<Ball> balls;
+	std::vector<Color> colors = {GRAY, YELLOW, ORANGE, PINK, RED, GREEN, BLUE, VIOLET};
 
         while (!WindowShouldClose())
         {
 		// LOGIC
 
-		if (IsKeyPressed(KEY_SPACE)) balls.push_back(Ball(GetMouseX(), GetMouseY(), 16, rand() % 600 + 100));
+		if (IsKeyPressed(KEY_SPACE)) balls.push_back(Ball(GetMouseX(), GetMouseY(), 16, rand() % 600 + 100, colors[rand() % colors.size()]));
 
-		for (int i = 0; i < balls.size(); i++)
+		for (long unsigned int i = 0; i < balls.size(); i++)
 		{
 			balls[i].move();
 			if (balls[i].bounceImpulse == 0) balls.erase(balls.begin() + i);
@@ -31,7 +32,7 @@ int main()
                 ClearBackground(BLACK);
                 DrawFPS(10, 10);
 
-                for (int i = 0; i < balls.size(); i++)
+                for (long unsigned int i = 0; i < balls.size(); i++)
                 {
 			balls[i].draw();
                 }
